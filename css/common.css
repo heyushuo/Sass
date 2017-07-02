@@ -1,0 +1,15 @@
+.box {
+  width: 30px; }
+  .box .main {
+    font-size: 12px; }
+  .box .footer {
+    color: blue; }
+  .box .head {
+    background: red; }
+  .box #btn {
+    height: 100px;
+    color: #FF0000;
+    background: black;
+    width: 300px; }
+
+/*# sourceMappingURL=common.css.map */

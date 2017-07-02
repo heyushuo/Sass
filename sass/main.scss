@@ -1,0 +1,207 @@
+@charset "utf-8";
+$color:red;
+$linkColor:#08c #333;
+.box{
+    width: 500px;
+    height: 200px;
+    border: 1px solid blcak;
+    .main{
+        width: 100px;
+        
+    }
+    .footer{
+        width: 400px;
+        color: $color;
+        background: black;
+        padding: 30px;
+        color: $color;
+        &:hover{
+            color: nth($linkColor,2);
+        }
+        .footerL{
+            height: 300px;
+        }
+        .footerR{
+            color: red;
+            background: auto;
+            height: 300px;
+            width: 300px;
+            color: red;
+            background: black;
+            font-family: "微软雅黑";
+        }
+    }
+}
+$headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
+/*
+ * 遍历 $header是key,$size是value,遍历的是$headings.
+ */
+@each $header, $size in $headings {
+  #{$header} {
+    font-size: $size;
+  }
+}
+
+  $side : left;
+//变量需要镶嵌在字符串之中，就必须需要写在#{}之中。如果是英文是需要加上#{}
+　div{
+     border-#{$side}-radius: 5px;
+     }
+     
+//（1）选择器嵌套
+//
+//所谓选择器嵌套指的是在一个选择器中嵌套另一个选择器来实现继承，从而增强了sass文件的结构性和可读性。
+//在选择器嵌套中，可以使用&表示父元素选择器
+
+#header{
+   height:40px;
+   background-color:#333;
+
+  a{
+    float:l block;
+    padding: 0 10px;
+    color: #fff;
+
+    &:hover{
+     color:#ddd;
+    }
+  }
+}
+//SASS混合(mixin)
+//Mixin有点像C语言的宏（macro），是可以重用的代码块。sass中使用@mixin声明混合，可以传递参数，
+//参数名以$符号开始，多个参数以逗号分开，也可以给参数设置默认值。声明的@mixin通过@include来调用。
+
+
+//(1) 无参数mixin
+@mixin left{
+    float: left;
+    margin-left: 90px;
+}
+
+div {
+    @include left;
+}
+
+//(2) 有参数mixin
+@mixin left($value:10px){
+    float: left;
+    margin-right: $value;
+}
+div{
+    @include left;//参数使用默认值
+}
+.div-80{
+    @include left(80);//传递参数
+}
+//(3) 多个参数mixin
+//调用时可直接传入值，如@include传入参数的个数小于@mixin定义参数的个数，则按照顺序表示，
+//后面不足的使用默认值，如不足的没有默认值则报错。除此之外还可以选择性的传入参数，使用参数名与值同时传入。
+
+@mixin rounded($horz,$vert:top,$radius:10px){
+    border-#{$vert}-#{$horz}-radius:$radius;
+}
+
+#navbar li {
+ @include rounded(left, top); 
+}
+#footer {
+    @include rounded($horz:left);
+ }
+//SASS继承@extend
+//SASS允许一个选择器，继承另一个选择器，并且可以联合声明，通过@extend关键字进行选择器的继承。
+.div1{
+    border: 2px solid black;
+}
+.div2{
+    @extend .div1;
+    font-size:100px;
+}
+//sass 完全可以像js一样在代码中使用运算符合，可以对数值型的Value(如：数字、颜色、变量等)进行加减乘除四则运算。
+//注意运算符前后请留一个空格，不然会出错。 
+$num:10px;
+body{
+    margin: (14px/2);
+    top: 50px + 100px;
+    left: $num*10;
+}
+
+//@if可一个条件单独使用，也可以和@else结合多条件使用，非常 好像
+
+p{
+    @if 1 + 1 == 2 {border: 1px solid black;}
+    @if 5 < 3 {border: 1px dashed red;} 
+}
+
+//三目判断
+
+//语法为：if($condition, $if_true, $if_false) 。三个参数分别表示：条件，条件为真的值，条件为假的值。
+
+.box{
+    border:if(true, 1px, 2px) black ;
+    margin: if(false, 1px, 2px) ;
+}
+//@for循环
+//
+//for循环有两种形式，分别为：
+//@for $var from <start> through <end>
+//@for $var from <start> to <end>。
+//$i表示变量，start表示起始值，end表示结束值，这两个的区别是关键字through表示包括end这个数，而to则不包括end这个数。
+@for $i from 1 to 3 {
+    .border-#{$i} {
+        border: #{$i}px solid blockquote;
+    }
+}
+
+@for $i from 1 through 3 {
+    .border-#{$i} {
+        border: #{$i}px solid blockquote;
+    }
+}
+
+//@each循环
+//语法为：@each $var in <list or map>。其中$var表示变量，
+//而list和map表示list类型数据和map类型数据。sass 3.3.0新加入了多字段循环和map数据循环。
+$list: adam john wynn mason kuroir;
+@each $data in $list {
+    .#{$data} {
+        background: url("image/#{$data}.png") no-repeat;
+    }
+}
+
+
+//$list: adam john wynn mason kuroir;
+//@each $data in adam john wynn mason kuroir {
+//　　　　.a{
+//　　　　　　background-image: url("/image/#{$data}.jpg") ;
+//　　　　}
+//　　}
+
+
+$animal-data: (puma, black, default),(sea-slug, blue, pointer),(egret, white, move);
+@each $animal, $color, $cursor in $animal-data {
+  .#{$animal}-icon {
+    background-image: url('/images/#{$animal}.png');
+    border: 2px solid $color;
+    cursor: $cursor;
+  }
+}
+
+//多个字段map数据循环
+$sizes: (h1: 2em, h2: 1.5em, h3: 1.2em);
+@each $size-name, $size in $sizes {
+  #{$size-name} {
+    font-size: $size;
+  }
+}
+
+//SASS函数
+//sass定义了很多函数可供使用，当然你也可以自己定义函数，以@fuction开始。实际项目中我们使用最多的应该是颜色函数，
+//而颜色函数中又以lighten减淡和darken加深为最，其调用方法为lighten($color,$amount)和darken($color,$amount)，
+//它们的第一个参数都是颜色值，第二个参数都是百分比。
+//
+@function add($n){
+    @return $n+2;
+}
+#slider{
+    width: add(5px);
+}

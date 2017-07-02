@@ -1,0 +1,145 @@
+@charset "UTF-8";
+.box {
+  width: 500px;
+  height: 200px;
+  border: 1px solid blcak; }
+  .box .main {
+    width: 100px; }
+  .box .footer {
+    width: 400px;
+    color: red;
+    background: black;
+    padding: 30px;
+    color: red; }
+    .box .footer:hover {
+      color: #333; }
+    .box .footer .footerL {
+      height: 300px; }
+    .box .footer .footerR {
+      color: red;
+      background: auto;
+      height: 300px;
+      width: 300px;
+      color: red;
+      background: black;
+      font-family: "微软雅黑"; }
+
+/*
+ * 遍历 $header是key,$size是value,遍历的是$headings.
+ */
+h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+
+　div {
+  border-left-radius: 5px; }
+
+#header {
+  height: 40px;
+  background-color: #333; }
+  #header a {
+    float: l block;
+    padding: 0 10px;
+    color: #fff; }
+    #header a:hover {
+      color: #ddd; }
+
+div {
+  float: left;
+  margin-left: 90px; }
+
+div {
+  float: left;
+  margin-right: 10px; }
+
+.div-80 {
+  float: left;
+  margin-right: 80; }
+
+#navbar li {
+  border-top-left-radius: 10px; }
+
+#footer {
+  border-top-left-radius: 10px; }
+
+.div1, .div2 {
+  border: 2px solid black; }
+
+.div2 {
+  font-size: 100px; }
+
+body {
+  margin: 7px;
+  top: 150px;
+  left: 100px; }
+
+p {
+  border: 1px solid black; }
+
+.box {
+  border: 1px black;
+  margin: 2px; }
+
+.border-1 {
+  border: 1px solid blockquote; }
+
+.border-2 {
+  border: 2px solid blockquote; }
+
+.border-1 {
+  border: 1px solid blockquote; }
+
+.border-2 {
+  border: 2px solid blockquote; }
+
+.border-3 {
+  border: 3px solid blockquote; }
+
+.adam {
+  background: url("image/adam.png") no-repeat; }
+
+.john {
+  background: url("image/john.png") no-repeat; }
+
+.wynn {
+  background: url("image/wynn.png") no-repeat; }
+
+.mason {
+  background: url("image/mason.png") no-repeat; }
+
+.kuroir {
+  background: url("image/kuroir.png") no-repeat; }
+
+.puma-icon {
+  background-image: url("/images/puma.png");
+  border: 2px solid black;
+  cursor: default; }
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png");
+  border: 2px solid blue;
+  cursor: pointer; }
+
+.egret-icon {
+  background-image: url("/images/egret.png");
+  border: 2px solid white;
+  cursor: move; }
+
+h1 {
+  font-size: 2em; }
+
+h2 {
+  font-size: 1.5em; }
+
+h3 {
+  font-size: 1.2em; }
+
+#slider {
+  width: 7px; }
+
+/*# sourceMappingURL=main.css.map */
